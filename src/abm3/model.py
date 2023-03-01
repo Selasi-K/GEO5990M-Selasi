@@ -38,22 +38,34 @@ print(agents)
 
 
 # Move agents
-for i in range(n_agents):
-    #Change agents(i) coordinates randomly
-    #x-coordinate
-    rn =random.random()
-    #print("rn", rn)
-    if rn < 0.5:
-        agents[i][0] = agents[i][0] + 1
-    else:
-        agents[i][0] = agents[i][0] - 0
-    #y-coordinate
-    rn = random.random()
-    #print("rn", rn)
-    if rn < 0.5:
-        agents[i][1] = agents[i][1] + 1
-    else:
-        agents[i][1] = agents[i][1] - 1
+n_iterations = 1000
+for n_iterations in range(n_iterations):
+    for i in range(n_agents):
+        #Change agents(i) coordinates randomly
+        #x-coordinate
+        rn =random.random()
+        #print("rn", rn)
+        if rn < 0.5:
+            agents[i][0] = agents[i][0] + 1
+        else:
+            agents[i][0] = agents[i][0] - 0
+        #y-coordinate
+        rn = random.random()
+        #print("rn", rn)
+        if rn < 0.5:
+            agents[i][1] = agents[i][1] + 1
+        else:
+            agents[i][1] = agents[i][1] - 1
+            
+         # Apply movement constraints.
+        if agents[i][0] < x_min:
+         agents[i][0] = x_min
+        if agents[i][1] < y_min:
+         agents[i][1] = y_min
+        if agents[i][0] > x_max:
+         agents[i][0] = x_max
+        if agents[i][1] > y_max:
+         agents[i][1] = y_max
     
         
 # Plot the agents
@@ -152,25 +164,15 @@ def get_min_and_max_distance():
 # A list to store times
 run_times = []
 n_agents_range = range(100, 101, 5)
-n_iterations = 1000
-for n_iterations in range(n_iterations):
-    
-    for n_agents in n_agents_range:
-    
-    # Initialise agents
-            agents = []
-            for i in range(n_agents):
-                agents.append([random.randint(0, 99), random.randint(0, 99)])
-        #print(agents)
-            # Apply movement constraints.
-            if agents[i][0] < x_min:
-                agents[i][0] = x_min
-            if agents[i][1] < y_min:
-                agents[i][1] = y_min
-            if agents[i][0] > x_max:
-                agents[i][0] = x_max
-            if agents[i][1] > y_max:
-                agents[i][1] = y_max
+  
+for n_agents in n_agents_range:
+
+# Initialise agents
+        agents = []
+        for i in range(n_agents):
+            agents.append([random.randint(0, 99), random.randint(0, 99)])
+    #print(agents)
+          
         
             
             # Print the maximum distance between all the agents
