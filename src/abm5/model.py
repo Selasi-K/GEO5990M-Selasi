@@ -8,6 +8,8 @@ import time
 import my_modules.agentframework as af
 import my_modules.io as io
 
+
+
 #Calling the io
 environment, n_rows, n_cols = io.read_data()
 
@@ -32,7 +34,7 @@ y_max = n_rows - 1
 #Create and append agents
 agents = []
 for i in range(n_agents):
-    # Create an agent
+# Create an agent
     agents.append(af.Agent(i,environment,n_rows,n_cols))
     print(agents[i])
 print(agents)
@@ -124,6 +126,29 @@ def get_min_and_max_distance():
                 #print("i", i, "j", j)
     return min_distance, max_distance, total_distances / n
 
+#Creating a function to find total values of environment
+def sumEnv():
+    sumEnv=0
+    for row in environment:
+        for v in row:
+            sumEnv += v
+        #sumEnv += sum(row)
+    return sumEnv
+    
+print('Sum of values in environment', sumEnv())
+
+#Create a function to find the sum of store values
+def sumAS():
+    Sumstore=0
+    for agent in agents:
+        Sumstore += agent.store
+    return  Sumstore
+
+print('Sum of stores', sumAS())
+
+#define a funtion to write environment 
+
+        
 
 # Move agents
 n_iterations = 100
@@ -132,6 +157,15 @@ for n_iterations in range(n_iterations):
         #Change agents(i) coordinates randomly
         agents[i].move(x_min, y_min, x_max, y_max)
         agents[i].eat()
+        
+#Calling write_data function
+n_cols = io.write_data(environment)
+    
+
+#Printing out results after moves
+print('Sum of values in environment', sumEnv())
+print('Sum of stores', sumAS())
+    
 # Plot
 plt.imshow(environment)
 

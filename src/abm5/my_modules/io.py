@@ -19,6 +19,9 @@ def read_data():
         data.append(row)
     f.close()
     print(data)
+    
+  
+
 #Checking that each row of data contains the same number of values, and returning the num of rows and columns
   #Checking number of rows and columns
     n_rows = len(data)
@@ -34,4 +37,11 @@ def read_data():
         return data, n_rows, n_cols
         f.close()
         print(data)
+
+def write_data(environment):
+    with open('../../data/output/out.txt','w', newline='') as f:
+        writer=csv.writer(f, delimiter=',')
+        for row in environment:
+            writer.writerow(row)
+    f.close()
         

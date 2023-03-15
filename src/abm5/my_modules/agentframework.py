@@ -41,7 +41,7 @@ class Agent:
         if rn < 0.5:
             self.x = self.x + 1
         else:
-            self.x = self.x - 0
+            self.x = self.x - 1
         #y-coordinate
         rn = random.random()
         #print("rn", rn)
@@ -59,7 +59,8 @@ class Agent:
          self.x = x_max
         if self.y  > y_max:
          self.y  = y_max
-    #defining eat method
+         
+    #defining eat method to gather 
     def eat(self):
         """
         The constructor method.
@@ -78,4 +79,7 @@ class Agent:
         if self.environment[self.y][self.x] >= 10:
             self.environment[self.y][self.x] -= 10
             self.store += 10
+        else:
+            self.store += self.environment[self.y][self.x]
+            self.environment[self.y][self.x]= 0
 
