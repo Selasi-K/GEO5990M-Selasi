@@ -32,7 +32,6 @@ class Agent:
         tnr = int(n_rows / 3)
         self.y = random.randint(tnr - 1, (2 * tnr) - 1)
         self.store = 0
-        self.store = random.randint(0,99)
         self.store_shares = 0
     
     def __str__(self):
@@ -73,19 +72,12 @@ class Agent:
         None.
 
         """
-        """
         if self.environment[self.y][self.x] >= 10:
             self.environment[self.y][self.x] -= 10
             self.store += 10
         else:
             self.store += self.environment[self.y][self.x]
             self.environment[self.y][self.x] = 0
-        """
-        
-        #if store is greater than 99
-        if   self.store > 99:
-            self.store = self.store/2 
-            self.environment[self.y][self.x] = self.environment[self.y][self.x] + self.store
             
     def share(self, neighbourhood):
     # Create a list of agents in neighbourhood
