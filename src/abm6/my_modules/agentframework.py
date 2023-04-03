@@ -1,3 +1,4 @@
+#Importing packages
 import random
 import my_modules.geometry as geometry
     
@@ -34,13 +35,49 @@ class Agent:
         self.store = 0
         self.store = random.randint(0,99)
         self.store_shares = 0
+        
     
     def __str__(self):
+        """
+        Return the instance in a string format.
+    
+        Returns:
+            A string as 'Class(x=value, y=value, i=value)' where:
+            - 'Class' is the class name.
+            - 'x', 'y', and 'i' are attributes of the instance.
+            - 'value' is the string format of the atrribute.
+            """
         return self.__class__.__name__ + "(x=" + str(self.x) \
         + ", y=" + str(self.y) + ", i=" + str(self.i) + ")"
+        
+        
+        
     def __repr__(self):
+        """
+        Return the instance in a string format and enhances printing results.
+    
+        Returns:
+            A string as 'Class(x=value, y=value, i=value)' where:
+          
+            """
         return str(self)
+    
+    
     def move(self, x_min, y_min, x_max, y_max):
+        """
+   Move the agents to a new location but ensures they are within set bounds.
+
+   Args:
+       x_min (int): The minimum x coordinate within the set boundary.
+       y_min (int): The minimum y coordinate within the set boundary.
+       x_max (int): The maximum x coordinate within the set boundary.
+       y_max (int): The maximum y coordinate within the set boundary.
+
+   The method randomly creates a new location for the instance by adding or
+   deducting 1 from its current x and y coordinates dependent on value of rn while ensuring
+   locations fall within the set boundary
+
+   """
         rn =random.random()
         if rn < 0.5:
             self.x = self.x + 1
@@ -65,29 +102,43 @@ class Agent:
          self.y  = y_max
          
     def eat(self):
+    
         """
+        This method takes units from the storage of an agent and stores them.
         
+        If the store has more than 99, half  of the value is taken and added to the environment. 
 
-        Returns
-        -------
-        None.
+    Args:
+        self (object): An instance of the agent class.
 
-        """
-        """
-        if self.environment[self.y][self.x] >= 10:
-            self.environment[self.y][self.x] -= 10
-            self.store += 10
-        else:
-            self.store += self.environment[self.y][self.x]
-            self.environment[self.y][self.x] = 0
-        """
-        
+    Returns:
+        None
+    """   
         #if store is greater than 99
         if   self.store > 99:
             self.store = self.store/2 
-            self.environment[self.y][self.x] = self.environment[self.y][self.x] + self.store
+            self.environment[self.y][self.x] += self.store
+            
             
     def share(self, neighbourhood):
+        """
+  Shares a portion of aone agent's resources with its neighbors within a given radius.
+
+  Parameters
+  ----------
+  neighbourhood : 
+      The radius of the circular neighborhood around the agent measured as distance.
+
+  Returns
+  -------
+  None
+
+  Notes
+  -----
+  The amount of resources to be shared is divided by the number of neighbouring agents 
+  `geometry.get_distance` is used to calculate the distance between agents.
+  
+  """
     # Create a list of agents in neighbourhood
         neighbours = []
         #print(self.agents[self.i])

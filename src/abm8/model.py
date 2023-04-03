@@ -1,12 +1,9 @@
 #Importing packages
 import random
-import math
 import matplotlib
 matplotlib.use('TkAgg')
-import matplotlib
 from matplotlib import pyplot as plt
 import operator
-import time
 import my_modules.agentframework as af
 import my_modules.io as io
 import my_modules.geometry as geometry
@@ -18,6 +15,14 @@ import tkinter as tk
 
 
 def get_max_distance():
+    """
+    Calculate and return the maximum distance between all the agents
+
+    Returns
+    -------
+    max_distance : Number
+        The maximum distance between all the agents.
+        """
     max_distance = 0
     for i in range(len(agents)):
         a = agents[i]
@@ -36,6 +41,18 @@ def get_max_distance():
 
 #Creating a function to find total values of environment
 def sumEnv():
+    """
+    Calculate the sum of all values in the list of lists.
+    
+    In an iterative way the function takes values in the environment and adds
+    them together till it obtains the sum of the values.
+
+    Args:
+        environment: A list of lists.
+
+    Returns:
+        The sum of all numeric values in `environment`.
+    """
     sumEnv=0
     for row in environment:
         for v in row:
@@ -47,12 +64,32 @@ def sumEnv():
 
 #Create a function to find the sum of store values
 def sumAS():
+    """
+    Calculate the total amount of units stored.
+    
+    The function in an iterative way goes through the agents and adds up the stores 
+    till it obtains the total number of units stored across all agents.
+
+   Args:
+      agents : A list of agent objects.
+
+  Returns:
+      The total stored across all agents.
+  """
     Sumstore=0
     for agent in agents:
         Sumstore += agent.store
     return  Sumstore
 
 def update(frames):
+    """
+   Updates the model to move agents, eat, share and adds a 
+   stop condition: if average agent stores is greater than 80,it stops.
+
+   Returns:
+       None
+
+   """
     # Model loop
     global carry_on
     #for ite in range(1, n_iterations + 1):
@@ -86,14 +123,22 @@ def update(frames):
     # Stopping condition
     # Random
     #if random.random() < 0.1:
+    #if average agent store is greater than 80:
     if sum_as / n_agents > 80:
-        carry_on = False
+        carry_on = False     
         print("stopping condition")
 
     # Plot
     plot()
     
 def gen_function():
+    """
+   This function generates iterations till stop condition is met and writes text and gif files to set filepath
+
+   Args:
+       None
+
+    """
     global ite
     global carry_on
     while (ite <= n_iterations) & (carry_on) :
@@ -106,6 +151,17 @@ def gen_function():
         data_written = True
     
 def plot():
+    """
+    This function creates scatter plots of the agents and saves the plots as png files
+    It also displays this plot.
+    
+    Args:
+        None
+
+    Returns:
+         A figure of the plot.
+
+    """
     fig.clear()
     plt.ylim(y_min, y_max)
     plt.xlim(x_min, x_max)
@@ -134,12 +190,26 @@ def plot():
 # print('Sum of stores', sumAS())
 
 def run(canvas):
+    """
+   The function runs a simulation that creates an animation and draws it on the canvas.
+
+   Parameters:
+   canvas: The object on on which the animation is drawn.
+
+   Returns:
+   None
+   """
     animation = anim.FuncAnimation(fig, update, init_func=plot, frames=gen_function, repeat=False)
     animation.new_frame_seq()
     canvas.draw()
     
 def output():
-    # Write data
+    """
+ The function writes the environment data and animation frames to file directory.
+
+   Returns:
+  None
+  """
     print("write data")
     io.write_data('../../data/output/out.txt', environment)
     imageio.mimsave('../../data/output/out.gif', images, fps=3)
@@ -153,6 +223,7 @@ def exiting():
     #sys.exit(0)
 
 
+# Introduce if clause  to keep codes that are not functions. Ensures it is run when the main program runs.
 if __name__ == '__main__':     
     
     #Calling the io
@@ -223,15 +294,6 @@ if __name__ == '__main__':
     tk.mainloop()
 
   
-    #Calculating the maximum distance using defined functions
-    max_distance = 0 # Initialise max_distance
-    for a in agents:
-        for b in agents:
-                #distance = get_distance(a[0], a[1], b[0], b[1])
-                distance = geometry.get_distance(a.x, a.y, b.x, b.y)
-                #print("distance between", a, b, distance)
-                max_distance = max(max_distance, distance)
-                #print("max_distance", max_distance)
 
     
     

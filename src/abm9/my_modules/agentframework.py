@@ -3,22 +3,24 @@ import random
 import my_modules.geometry as geometry
     
 class Agent:
-    def __init__(self, agents, i, environment, n_rows, n_cols):
+    def __init__(self, agents, i, environment, n_rows, n_cols, x = None, y = None):
         """
         The constructor method.
         
         Parameters
         ----------
-        agents : List
-        A list of Agent instances.
         i : Integer
-        To be unique to each instance.
+            To be unique to each instance.
         environment : List
-        A reference to a shared environment
+            A reference to a shared environment
         n_rows : Integer
-        The number of rows in environment.
+            The number of rows in environment.
         n_cols : Integer
-        The number of columns in environment.
+            The number of columns in environment.
+        x : Integer
+            For initialising the x coordinate of the agent.
+        y : Integer
+            For initialising the y coordinate of the agent.
         
         Returns
         -------
@@ -28,11 +30,17 @@ class Agent:
         self.agents = agents
         self.i = i
         self.environment = environment
-        tnc = int(n_cols / 3)
-        self.x = random.randint(tnc - 1, (2 * tnc) - 1)
-        tnr = int(n_rows / 3)
-        self.y = random.randint(tnr - 1, (2 * tnr) - 1)
-        self.store = 0
+        if x == None:
+            tnc = int(n_cols / 3)
+            self.x = random.randint(tnc - 1, (2 * tnc) - 1)
+        else:
+            self.x = x
+        if y == None:
+            tnr = int(n_rows / 3)
+            self.y = random.randint(tnr - 1, (2 * tnr) - 1)
+        else:
+            self.y = y
+        self.store = random.randint(0, 99)
         self.store_shares = 0
     
     def __str__(self):
@@ -54,7 +62,7 @@ class Agent:
     
         Returns:
             A string as 'Class(x=value, y=value, i=value)' where:
-            
+         
             """
         return str(self)
     
@@ -98,10 +106,10 @@ class Agent:
          
     def eat(self):
         """
-      This method takes units from the storage of an agent and stores them.
+      This method takes units from the environment of an agent and stores them.
       
-      If the environment has more than 10, 10 is added to self store, 
-      else everything is added to the enviroment and environment is reset to 0
+      If the environment has 10 or more units, 10 is taken and added to the store, 
+      else everything is added to the store and environment is reset to 0
       
       Adds an extra condition stating that if store value is greater than 99, 
       half of the value is taken and added to the environment
@@ -113,6 +121,7 @@ class Agent:
       None
    
     """ 
+       
         if self.environment[self.y][self.x] >= 10:
             self.environment[self.y][self.x] -= 10
             self.store += 10
@@ -136,14 +145,14 @@ class Agent:
 
   Parameters
   ----------
-  neighbourhood : float
+  neighbourhood :
       The radius of the circular neighborhood around the agent measured as distance.
 
   Returns
   -------
   None
 
-  """
+   """
     # Create a list of agents in neighbourhood
         neighbours = []
         #print(self.agents[self.i])

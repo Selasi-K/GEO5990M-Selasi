@@ -1,3 +1,4 @@
+#Import package
 import random
     
 class Agent:
@@ -28,15 +29,52 @@ class Agent:
         tnr = int(n_rows / 3)
         self.y = random.randint(tnr - 1, (2 * tnr) - 1)
         self.store = 0
+        
     #string method    
     def __str__(self):
+        """
+        Return the instance in a string format.
+    
+        Returns:
+            A string as 'Class(x=value, y=value, i=value)' where:
+            - 'Class' is the class name.
+            - 'x', 'y', and 'i' are attributes of the instance.
+            - 'value' is the string format of the atrribute.
+            """
         return self.__class__.__name__ + "(x=" + str(self.x) \
         + ", y=" + str(self.y) + ", i=" + str(self.i) + ")"
+        
+        
     #repair method
     def __repr__(self):
+        """
+        Return the instance in a string format and enhances printing results.
+    
+        Returns:
+            A string as 'Class(x=value, y=value, i=value)' where:
+            
+            """
         return str(self)
+    
+    
+    
+    
     #move method
     def move(self, x_min, y_min, x_max, y_max):
+        """
+   Move the agents to a new location but ensures they are within set bounds.
+
+   Args:
+       x_min (int): The minimum x coordinate within the set boundary.
+       y_min (int): The minimum y coordinate within the set boundary.
+       x_max (int): The maximum x coordinate within the set boundary.
+       y_max (int): The maximum y coordinate within the set boundary.
+
+   The method randomly creates a new location for the instance by adding or
+   deducting 1 from its current x and y coordinates dependent on value of rn while ensuring
+   locations fall within the set boundary.
+
+   """
         rn =random.random()
         if rn < 0.5:
             self.x = self.x + 1
@@ -60,22 +98,23 @@ class Agent:
         if self.y  > y_max:
          self.y  = y_max
          
+         
+         
+         
     #defining eat method to gather 
     def eat(self):
         """
-        The constructor method.
+        This method takes units from the environment and stores them.
         
-        Parameters
-        ----------
-        self : 
-            To be unique to each instance.
-        environment : List
-            A reference to a shared environment
-            
-        Returns
-        -------
-        None.
-        """
+        If the location contains 10 or more, 10 units are taken and stored, 
+        otherwise everything is deposited in the store.
+
+    Args:
+        self (object): An instance of the agent class.
+
+    Returns:
+        None
+    """
         if self.environment[self.y][self.x] >= 10:
             self.environment[self.y][self.x] -= 10
             self.store += 10

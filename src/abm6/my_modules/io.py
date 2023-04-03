@@ -1,14 +1,17 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Mar  8 13:48:42 2023
-
-@author: Selasi
-"""
-
+#import package
 import csv
 
 # Read input data
-def read_data():
+def read_data(filepath):
+    """
+    Read a CSV file  and presents it as a list of list
+    
+    The fumction opens the text file from '../../data/input/in.txt' directory
+    and reads it in using the csv module. Each row is collected as list of lists
+
+   Returns:
+       A list of lists with data read from the input file.
+   """
     f = open('../../data/input/in.txt', newline='')
     data = []
     for line in csv.reader(f, quoting=csv.QUOTE_NONNUMERIC):
@@ -39,6 +42,22 @@ def read_data():
         print(data)
 
 def write_data(environment):
+    """
+    Write a list of lists with data produced to a CSV file.
+
+    This function takes the list of lists produced, opens 
+    '../../data/output/out.txt' directory and writes the environment contents
+    to it using the csv module. Lists within
+    lists are treated as rows written as comma-separated values.
+    
+    Args:
+        environment: A list of lists containing numeric 
+        data to be written to the output file.
+
+    Returns:
+        None
+    """
+    
     with open('../../data/output/out.txt','w', newline='') as f:
         writer=csv.writer(f, delimiter=',')
         for row in environment:

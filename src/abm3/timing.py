@@ -1,10 +1,7 @@
-#abm2 practical session
 #Importing random package
 import random
 import math
-import matplotlib
 from matplotlib import pyplot as plt
-import operator
 import time
 
 
@@ -24,7 +21,7 @@ y_max = 99
 #Create a list to stire agents
 agents = []
 # Initialise agents
-n_agents = 5
+n_agents = 1000
 
 for i in range(n_agents):
     x0 = random.randint(0,99)
@@ -32,11 +29,8 @@ for i in range(n_agents):
     y0 = random.randint(0,99)
     #print("y0", y0)
     agents.append([x0,y0])
-    #agents.append([random.randint(0,99), random.randint(0, 99)])
 
 #print(agents)
-
-
 
 # Calculate the Euclidean distance between (x0, y0) and (x1, y1) using functions
 #Setting variables of coordinates
@@ -45,6 +39,25 @@ y0 = 0
 x1 = 3
 y1 = 4
 def get_distance(x0, y0, x1, y1):
+    """
+    Calculate the Euclidean distance between (x0, y0) and (x1, y1).
+
+    Parameters
+    ----------
+    x0 : Number
+        The x-coordinate of the first coordinate pair.
+    y0 : Number
+        The y-coordinate of the first coordinate pair.
+    x1 : Number
+        The x-coordinate of the second coordinate pair.
+    y1 : Number
+        The y-coordinate of the second coordinate pair.
+
+    Returns
+    -------
+    distance : Number
+        The Euclidean distance between (x0, y0) and (x1, y1).
+    """
     # Calculate the difference in the x coordinates.
     diff_x = x0 - x1
     # Calculate the difference in the y coordinates.
@@ -56,51 +69,25 @@ def get_distance(x0, y0, x1, y1):
     return distance
 print(get_distance(x0, y0, x1, y1))
 
-#Calculating the maximum distance using defined functions
-max_distance = 0 # Initialise max_distance
-for a in agents:
-    for b in agents:
-            distance = get_distance(a[0], a[1], b[0], b[1])
-            #print("distance between", a, b, distance)
-            max_distance = max(max_distance, distance)
-            #print("max_distance", max_distance)
-
-
-def get_max_distance():
-    max_distance = 0
-    for i in range(len(agents)):
-        a = agents[i]
-        #for j in range(len(agents)):
-        for j in range(i+1, len(agents), 1):
-                #if i != j:
-                #if i < j:
-                #print(i, j) 
-                b = agents[j]
-                distance = get_distance(a[0], a[1], b[0], b[1])
-                #print("distance between", a, b, distance)
-                max_distance = max(max_distance, distance)
-                #print("max_distance", max_distance)
-                #print("i", i, "j", j)
-    return max_distance
-
-def get_min_distance():
-    min_distance = math.inf
-    for i in range(len(agents)):
-        a = agents[i]
-        #for j in range(len(agents)):
-        for j in range(i+1, len(agents), 1):
-                #if i != j:
-                #if i < j:
-                #print(i, j) 
-                b = agents[j]
-                distance = get_distance(a[0], a[1], b[0], b[1])
-                #print("distance between", a, b, distance)
-                min_distance = min(min_distance, distance)
-                #print("min_distance", min_distance)
-                #print("i", i, "j", j)
-    return min_distance
 
 def get_min_and_max_distance():
+    """
+    Calculate and return the maximum and minimum distance between all the agents
+    Also calculates the average of these distances
+
+    Returns
+    -------
+    max_distance : Number
+        The maximum distance between all the agents.
+        
+    min_distance : Number
+        The minimum distance between all the agents.
+    
+    average distance: float
+        The averahe distance between all the agents
+    
+    
+       """
     max_distance = 0
     min_distance = math.inf
     total_distances = 0
@@ -125,7 +112,7 @@ def get_min_and_max_distance():
 
 # A list to store times
 run_times = []
-n_agents_range = range(100, 101, 5)
+n_agents_range = range(500, 5000, 500)
     
 for n_agents in n_agents_range:
 

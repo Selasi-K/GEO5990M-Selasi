@@ -1,14 +1,14 @@
-#abm1 practical session
+#abm1 
 #Importing random package
 import random
-import math
+import math #Importing math pazckage
 
 # Set the pseudo-random seed for reproducibility
 random.seed(0)
 
 # Initialise variable x0
 x0 = 0
-print("x0", x0)
+print("x0", x0) #prints out results
 
 # Initialise variable y0
 y0 = 0
@@ -17,8 +17,9 @@ print("y0", y0)
 # Change x0 and y0 randomly
 rn = random.random()
 print(rn)
+
 #adding the conditional if statement
-#Simplifying the code
+#If random value is less than 0.5, 1 is added else 1 is subtracted
 if rn < 0.5:
     x0 = x0 + 1
 else:
@@ -55,22 +56,26 @@ else:
     y1 = y1 - 1
 print("y1", y1)
 
-# Calculate the Euclidean distance between (x0, y0) and (x1, y1)
+# Calculating the Euclidean distance between (x0, y0) and (x1, y1)
 #Setting variables of coordinates
 x0 = 0
 y0 = 0
 x1 = 3
 y1 = 4
-# Calculate the difference in the x coordinates.
+
+# Calculating the difference in the x coordinates.
 diff_x = x0 - x1
-print("diff_x", diff_x)
-# Calculate the difference in the y coordinates.
+print("difference in x", diff_x)
+
+# Calculating the difference in the y coordinates.
 diff_y = y0 - y1
-print("diff_y", diff_y)
-# Square the differences and add the squares
+print("difference in y", diff_y)
+
+# Squaring the differences and add the squares
 add_squaresxy = (diff_x * diff_x) + (diff_y * diff_y)
 print("add_squarexy", add_squaresxy)
-# Calculate the square root
+
+# Calculating the square root to find final result
 distance = math.sqrt(add_squaresxy)
 print("distance", distance)
 

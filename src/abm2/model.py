@@ -1,5 +1,5 @@
-#abm2 practical session
-#Importing random package
+#abm2
+#Importing packages
 import random
 import math
 import matplotlib
@@ -9,18 +9,19 @@ import operator
 # Set the pseudo-random seed for reproducibility
 random.seed(0)
 
-#Create a list to stire agents
+#Create an empty list to store agents
 agents = []
 
 # Initialise agents
 n_agents = 10
+#for loop to generate random agents
 for i in range(n_agents):
     x0 = random.randint(0,99)
     #print("x0", x0)
     y0 = random.randint(0,99)
     #print("y0", y0)
     agents.append([x0,y0])
-    #agents.append([random.randint(0,99), random.randint(0, 99)])
+    #agents.append([random.randint(0,99), random.randint(0, 99)]) #A different way to do the loop
 
 print(agents)
 
@@ -29,12 +30,13 @@ print(agents)
 for i in range(n_agents):
     #Change agents(i) coordinates randomly
     #x-coordinate
-    rn =random.random()
+    rn = random.random()
     #print("rn", rn)
+    #If rn is less than 0.5 1 is added to agent coordinate, else 1 is subtracted
     if rn < 0.5:
         agents[i][0] = agents[i][0] + 1
     else:
-        agents[i][0] = agents[i][0] - 0
+        agents[i][0] = agents[i][0] - 1
     #y-coordinate
     rn = random.random()
     #print("rn", rn)
@@ -46,16 +48,20 @@ for i in range(n_agents):
         
 # Plot the agents
 for i in range(n_agents):
+    #Plot coordinates black#
     plt.scatter(agents[i][0], agents[i][1], color='black')
     # Get the coordinates with the largest x-coordinate
     maxx = (max(agents, key=operator.itemgetter(0)))
+    #Plot the coordinate with the largest x red#
     plt.scatter(maxx[0], maxx[1], color='red')
     # Get the coordinates with the smallest x-coordinate
     minx = (min(agents, key=operator.itemgetter(0)))
+    #Plot the coordinate with the smallest  x blue#
     plt.scatter(minx[0], minx[1], color='blue')
     #Plot the coordinate with the largest y yellow#
     maxy = (max(agents, key=operator.itemgetter(1)))
     plt.scatter(maxy[0], maxy[1], color='yellow')
+    #Plot the coordinate with the smallest  y green#
     miny = (min(agents, key=operator.itemgetter(1)))
     plt.scatter(miny[0], miny[1], color='green')
 plt.show()

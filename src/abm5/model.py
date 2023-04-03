@@ -1,14 +1,10 @@
 #Importing packages
 import random
 import math
-import matplotlib
 from matplotlib import pyplot as plt
 import operator
-import time
 import my_modules.agentframework as af
 import my_modules.io as io
-
-
 
 #Calling the io
 environment, n_rows, n_cols = io.read_data()
@@ -46,7 +42,28 @@ x0 = 0
 y0 = 0
 x1 = 3
 y1 = 4
+
+
 def get_distance(x0, y0, x1, y1):
+    """
+    Calculate the Euclidean distance between (x0, y0) and (x1, y1).
+
+    Parameters
+    ----------
+    x0 : Number
+        The x-coordinate of the first coordinate pair.
+    y0 : Number
+        The y-coordinate of the first coordinate pair.
+    x1 : Number
+        The x-coordinate of the second coordinate pair.
+    y1 : Number
+        The y-coordinate of the second coordinate pair.
+
+    Returns
+    -------
+    distance : Number
+        The Euclidean distance between (x0, y0) and (x1, y1).
+    """
     # Calculate the difference in the x coordinates.
     diff_x = x0 - x1
     # Calculate the difference in the y coordinates.
@@ -58,52 +75,23 @@ def get_distance(x0, y0, x1, y1):
     return distance
 #print(get_distance(x0, y0, x1, y1))
 
-#Calculating the maximum distance using defined functions
-max_distance = 0 # Initialise max_distance
-for a in agents:
-    for b in agents:
-            #distance = get_distance(a[0], a[1], b[0], b[1])
-            distance = get_distance(a.x, a.y, b.x, b.y)
-            #print("distance between", a, b, distance)
-            max_distance = max(max_distance, distance)
-            #print("max_distance", max_distance)
-
-
-def get_max_distance():
-    max_distance = 0
-    for i in range(len(agents)):
-        a = agents[i]
-        #for j in range(len(agents)):
-        for j in range(i+1, len(agents), 1):
-                #if i != j:
-                #if i < j:
-                #print(i, j) 
-                b = agents[j]
-                distance = get_distance(a.x, a.y, b.x, b.y)
-                #print("distance between", a, b, distance)
-                max_distance = max(max_distance, distance)
-                #print("max_distance", max_distance)
-                #print("i", i, "j", j)
-    return max_distance
-
-def get_min_distance():
-    min_distance = math.inf
-    for i in range(len(agents)):
-        a = agents[i]
-        #for j in range(len(agents)):
-        for j in range(i+1, len(agents), 1):
-                #if i != j:
-                #if i < j:
-                #print(i, j) 
-                b = agents[j]
-                distance = get_distance(a.x, a.y, b.x, b.y)
-                #print("distance between", a, b, distance)
-                min_distance = min(min_distance, distance)
-                #print("min_distance", min_distance)
-                #print("i", i, "j", j)
-    return min_distance
-
 def get_min_and_max_distance():
+    """
+    Calculate and return the maximum and minimum distance between all the agents
+    Also calculates the average of these distances
+
+    Returns
+    -------
+    max_distance : Number
+        The maximum distance between all the agents.
+        
+    min_distance : Number
+        The minimum distance between all the agents.
+    
+    average distance: float
+        The averahe distance between all the agents
+        
+       """
     max_distance = 0
     min_distance = math.inf
     total_distances = 0
@@ -126,8 +114,20 @@ def get_min_and_max_distance():
                 #print("i", i, "j", j)
     return min_distance, max_distance, total_distances / n
 
-#Creating a function to find total values of environment
+
 def sumEnv():
+    """
+    Calculate the sum of all values in the list of lists.
+    
+    In an iterative way the function takes values in the environment and adds
+    them together till it obtains the sum of the values.
+
+    Args:
+        environment : A list of lists with numeric values.
+
+    Returns:
+        The sum of all numeric values in `environment`.
+    """
     sumEnv=0
     for row in environment:
         for v in row:
@@ -139,6 +139,18 @@ print('Sum of values in environment', sumEnv())
 
 #Create a function to find the sum of store values
 def sumAS():
+    """
+    Calculate the total amount of units stored.
+    
+    The function in an iterative way goes through the agents and adds up the stores 
+    till it obtains the total number of units stored across all agents.
+
+   Args:
+      agents : A list of agent objects.
+
+  Returns:
+       The total stored across all agents.
+  """
     Sumstore=0
     for agent in agents:
         Sumstore += agent.store

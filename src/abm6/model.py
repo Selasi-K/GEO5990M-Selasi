@@ -1,18 +1,23 @@
 #Importing packages
 import random
-import math
-import matplotlib
 from matplotlib import pyplot as plt
 import operator
-import time
 import my_modules.agentframework as af
 import my_modules.io as io
-import geometry as geometry
+import my_modules.geometry as geometry
 import imageio
 import os
 
 
 def get_max_distance():
+    """
+    Calculate and return the maximum distance between all the agents
+
+    Returns
+    -------
+    max_distance : Number
+        The maximum distance between all the agents.
+        """
     max_distance = 0
     for i in range(len(agents)):
         a = agents[i]
@@ -31,6 +36,18 @@ def get_max_distance():
 
 #Creating a function to find total values of environment
 def sumEnv():
+    """
+    Calculate the sum of all values in the list of lists.
+    
+    In an iterative way the function takes values in the environment and adds
+    them together till it obtains the sum of the values.
+
+    Args:
+        environment : A list of lists.
+
+    Returns:
+         The sum of all numeric values in `environment`.
+    """
     sumEnv=0
     for row in environment:
         for v in row:
@@ -42,6 +59,18 @@ def sumEnv():
 
 #Create a function to find the sum of store values
 def sumAS():
+    """
+    Calculate the total amount of units stored.
+    
+    The function in an iterative way goes through the agents and adds up the stores 
+    till it obtains the total number of units stored across all agents.
+
+   Args:
+      agents : A list of agent objects.
+
+  Returns:
+     The total stored across all agents.
+  """
     Sumstore=0
     for agent in agents:
         Sumstore += agent.store
@@ -49,11 +78,11 @@ def sumAS():
 
 # print('Sum of stores', sumAS())
 
-
+# Introduce if clause  to keep codes that are not functions.Ensures they are run when the main program runs
 if __name__ == '__main__':     
     
     #Calling the io
-    environment, n_rows, n_cols = io.read_data()
+    environment, n_rows, n_cols = io.read_data('../../data/input/in.txt')
 
     # Set the pseudo-random seed for reproducibility
     random.seed(0)
