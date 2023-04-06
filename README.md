@@ -15,41 +15,6 @@ Output of the model will be saved in a set file directory while final output wil
 
 License - Apache 2.0. Read the licence file for more information. Additional, you can visit this link for more details: https://www.apache.org/licenses/LICENSE-2.0
 
-##FILE DIRECTORY
--data - input - contains in.txt file which contains coordinates data read by the program
-	 - output - contains out.gif,out.txt,out7.gif,out7.txt and Images folder. (All are outputs of the program)
-
--src- abm1 - model.py
-	 abm2 - model.py
-	 abm3 - model.py
-			timing.py
-	 abm4 -	agentframework.py
-			model.py
-	
-	 abm5 -	my_modules - agentframework.py
-						 io.py
-		  -	model.py	  
-	 
-	 abm6 - my_modules - agentframework.py
-						 geometry.py
-						 io.py			 
-		  -	model.py
-		  
-	 abm7 -  my_modules - agentframework.py
-						 geometry.py
-						 io.py				 
-		  -	model.py
-		  
-	 abm8 -  my_modules - agentframework.py
-						 geometry.py
-						 io.py			 
-		  -	model.py
-		  
-	 abm9 - my_modules - agentframework.py
-						 geometry.py
-						 io.py			 
-		  -	model.py
-
 ##PREREQUISITES
 
 This program runs preferably best on the Scientific Python Development Environment (Spyder) IDE,one of the programs in the Anaconda package on a computer.
