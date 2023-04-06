@@ -15,50 +15,7 @@ Output of the model will be saved in a set file directory while final output wil
 
 License - Apache 2.0. Read the licence file for more information. Additional, you can visit this link for more details: https://www.apache.org/licenses/LICENSE-2.0
 
-##FILE DIRECTORY
 
-data - input - contains in.txt file which contains coordinates data read by the program
-
-	 - output - contains out.gif,out.txt,out7.gif,out7.txt and Images folder. (All are outputs of the program)
-
-src- abm1 - model.py
-
-	 abm2 - model.py
-
-	 abm3 - model.py
-			timing.py
-
-	 abm4 -	agentframework.py
-			model.py
-	
-	 abm5 -	my_modules - agentframework.py
-						 io.py
-		  -	model.py	  
-	 
-	 abm6 - my_modules - agentframework.py
-						 geometry.py
-						 io.py			 
-		  -	model.py
-		  
-	 abm7 -  my_modules - agentframework.py
-						 geometry.py
-						 io.py				 
-		  -	model.py
-		  
-	 abm8 -  my_modules - agentframework.py
-						 geometry.py
-						 io.py			 
-		  -	model.py
-		  
-	 abm9 - my_modules - agentframework.py
-						 geometry.py
-						 io.py			 
-		  -	model.py
-
-licence
-
-README.md
-		  
 ##PREREQUISITES
 
 This program runs preferably best on the Scientific Python Development Environment (Spyder) IDE,one of the programs in the Anaconda package on a computer.
@@ -75,7 +32,7 @@ You should see three windows, The Editor where most of the coding will be done o
 on top right where tools like variable explorer, help and plots can be be accessed, and ipython console where some outputs 
 are printed and additionally coding can be done (Watch video in the above link for more details). Also see figure 1 in the word document.
 
-#RUNNING THE PROGRAM
+##RUNNING THE PROGRAM
 
 From the tool bar at the top of your screen, click open file or hit Ctrl + O on your keyboard.
 Navigate to where you have saved the files and select your desired file. For instance, select Abm9 to see final simulation output.
@@ -97,7 +54,7 @@ Once run is clicked, a series of steps are followed to produce the final simulat
 -It can additionally be displayed on a canvas as a GUI.
 -The GUI model can be run by clicking 'model' and then 'run' from the drop down menu (See figures 2,3 and 4 in attached word document).
 
-#Brief about ABM files
+##Brief about ABM files
 
 ABM1 - Basic steps in initializing random variables and calculating Euclidean distance between them.
 
@@ -118,6 +75,12 @@ ABM7- Introducing exceptions and more on displaying outputs as animations
 ABM8- Introducing GUI
 
 ABM9 -Reading in data from web sources.
+
+data - Contains inputs and outputs relevant to software.
+
+licence -Licence information
+
+readme.md -basic information about codes.
 
 
 Note: In case of any errors, use the debugging tool to detect the problem. ipython console is also 
