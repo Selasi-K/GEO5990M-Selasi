@@ -16,7 +16,6 @@ import bs4
 
 
 
-
 def get_max_distance():
     """
     Calculate and return the maximum distance between all the agents
