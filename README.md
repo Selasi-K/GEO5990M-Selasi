@@ -100,15 +100,23 @@ Once run is clicked, a series of steps are followed to produce the final simulat
 #Brief about ABM files
 
 ABM1 - Basic steps in initializing random variables and calculating Euclidean distance between them.
+
 ABM2 - Creating lists to store agents using loops and plotting these agents to visualize them.
+
 ABM3 - Creating functions to calculate maximum, minimum and average distances between coordinates 
 		and adding a timing code to assess time taken to execute command. Movement constraints are also introduced.
+
 ABM4 - Introducing classes and how to use them to hold different methods.
+
 ABM5 - Reading  in and writing data using the csv module and introducing interactions between the agents and the environment.
+
 ABM6 - Assessing neigbourhood of neighbours and adding conditions for sharing resources. The if __name__ == '__main__': is 
 introduced to better organize the code. Outputs are produced as gif files.
+
 ABM7- Introducing exceptions and more on displaying outputs as animations
+
 ABM8- Introducing GUI
+
 ABM9 -Reading in data from web sources.
 
 
