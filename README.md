@@ -1,7 +1,9 @@
 #PROJECT TITLE
+
 AGENT BASED MODEL
 
 ##DESCRIPTION 
+
 The Agent Based Model is a simulation software which is usually used to study behaviour in complex systems.
 In this model, agents are created and taken through some steps in an iterative manner which in the long
 run alters their characteristics and environment. Some of these steps include randomly moving, eating, sharing resources, and measuring
@@ -14,7 +16,9 @@ Output of the model will be saved in a set file directory while final output wil
 License - Apache 2.0. Read the licence file for more information. Additional, you can visit this link for more details: https://www.apache.org/licenses/LICENSE-2.0
 
 ##FILE DIRECTORY
+
 data - input - contains in.txt file which contains coordinates data read by the program
+
 	 - output - contains out.gif,out.txt,out7.gif,out7.txt and Images folder. (All are outputs of the program)
 
 src- abm1 - model.py
@@ -55,7 +59,8 @@ licence
 
 README.md
 		  
-#PREREQUISITES
+##PREREQUISITES
+
 This program runs preferably best on the Scientific Python Development Environment (Spyder) IDE,one of the programs in the Anaconda package on a computer.
 However it will also work on any python compatible software. Spyder is a free open source 
 Python system which has a good interface and tools helpful in visualing outputs, debugging, and
@@ -63,13 +68,15 @@ interactivity. To download and install python click this link and follow the ins
 https://www.spyder-ide.org/
 Additionally, watch the video on getting started to learn about the basics of the program.
 
-#USAGE
+##USAGE
+
 Once the Spyder program is installed succefully,launch the program.
 You should see three windows, The Editor where most of the coding will be done on the left, Help viewer
 on top right where tools like variable explorer, help and plots can be be accessed, and ipython console where some outputs 
 are printed and additionally coding can be done (Watch video in the above link for more details). Also see figure 1 in the word document.
 
 #RUNNING THE PROGRAM
+
 From the tool bar at the top of your screen, click open file or hit Ctrl + O on your keyboard.
 Navigate to where you have saved the files and select your desired file. For instance, select Abm9 to see final simulation output.
 Note: All files in your prefered Abm folder should be opened for optimum run of the program.
@@ -91,6 +98,7 @@ Once run is clicked, a series of steps are followed to produce the final simulat
 -The GUI model can be run by clicking 'model' and then 'run' from the drop down menu (See figures 2,3 and 4 in attached word document).
 
 #Brief about ABM files
+
 ABM1 - Basic steps in initializing random variables and calculating Euclidean distance between them.
 ABM2 - Creating lists to store agents using loops and plotting these agents to visualize them.
 ABM3 - Creating functions to calculate maximum, minimum and average distances between coordinates 
@@ -106,6 +114,7 @@ ABM9 -Reading in data from web sources.
 
 Note: In case of any errors, use the debugging tool to detect the problem. ipython console is also 
 particularly helpful in doing this.
+
 Also, tests showed that errors can be caused when file path in the python manager(see figure 5 in document) does not match files opened.
 To fix, this add appropriate file path and try running code again.
 
